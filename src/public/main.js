@@ -3,7 +3,7 @@ const PUBLIC_VAPID_KEY = 'BKJ7BjejQ9wpbYJhheVwYDr6jxDhjYrEwRk7sR-ZvfuvvIo2Ga7SaY
 const subscription = async ()=>{
 
     //Service worker
-    const register = await navigator.serviceWorker.register('/worker.js',{
+    const register = await navigator.serviceWorker.register('https://whispering-temple-99303.herokuapp.com/worker.js',{
         scope:'/'
     })
 

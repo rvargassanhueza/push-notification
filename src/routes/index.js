@@ -12,7 +12,7 @@ router.post('/subscription', async (req,res)=>{
 })
 
 router.post('/new-message', async (req,res)=>{
-
+console.log("req.body: ",req.body);
     const {title,message,destino,imagen} = req.body
 
         const payload = JSON.stringify({

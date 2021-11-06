@@ -1,4 +1,4 @@
-const PUBLIC_VAPID_KEY = 'BMGM7K5vSqmO1sPcwmN0wwMXzy1WvQtL8eJOZECtDH72PO1DQnhW4D51ly8PDN4tKl9AqBvo373xdmxE1CXNUZk';
+const PUBLIC_VAPID_KEY = 'BKJ7BjejQ9wpbYJhheVwYDr6jxDhjYrEwRk7sR-ZvfuvvIo2Ga7SaYTIdVQ5rvOaJiTORQnuFLuGDzAAVEHGZiI';
 
 const subscription = async ()=>{
 

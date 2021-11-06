@@ -9,9 +9,9 @@ self.registration.showNotification(data.title,{
 })
 })
 
-self.addEventListener('notificationclick', function(event) {
-    event.notification.close();
-    event.waitUntil(
+self.addEventListener('notificationclick', function(e) {
+    e.notification.close();
+    e.waitUntil(
       clients.openWindow(destino)
     );
   });

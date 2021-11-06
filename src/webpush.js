@@ -1,11 +1,9 @@
 const webpush = require('web-push')
 
-// console.log(process.env.PUBLIC_VAPID_KEY,process.env.PRIVATE_VAPID_KEYS)
-
 webpush.setVapidDetails(
     'mailto:rvargas@cooperativa.cl',
-    process.env.PUBLIC_VAPID_KEY, 
-    process.env.PRIVATE_VAPID_KEYS
+    'BKJ7BjejQ9wpbYJhheVwYDr6jxDhjYrEwRk7sR-ZvfuvvIo2Ga7SaYTIdVQ5rvOaJiTORQnuFLuGDzAAVEHGZiI', 
+    'b5ogDs1SK5lcRvt60bF2RfrqkynkyDp7wGR98BIFxzs'
     )
 
     module.exports = webpush;

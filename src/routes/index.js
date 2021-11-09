@@ -3,10 +3,10 @@ const router = Router()
 
 const webpush = require('../webpush');
 
-let pushSubscription;
+let pushSubscription = [];
 
 router.post('/subscription', async (req,res)=>{
-    pushSubscription = req.body;
+    pushSubscription.push(req.body);
 
     res.status(200).json();
 })
@@ -21,8 +21,12 @@ router.post('/new-message', async (req,res)=>{
         }) 
 
         try {
-            const response = await webpush.sendNotification(pushSubscription,payload)
+            for(let i=0;  i<=pushSubscription.length;i++){
+            const response = await webpush.sendNotification(pushSubscription[i],payload)
             console.log("response: ",response);
+
+            }
+            // const response = await webpush.sendNotification(pushSubscription,payload)
             res.status(201).json();
 
         } catch (error) {

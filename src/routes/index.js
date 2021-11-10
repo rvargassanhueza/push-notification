@@ -22,7 +22,7 @@ router.post('/new-message', async (req,res)=>{
 
         try {
             for(let i=0;  i<=pushSubscription.length;i++){
-                if(pushSubscription[i] === pushSubscription[i]+1 ){
+                if(pushSubscription[i] === pushSubscription[i+1] ){
                     console.log("se repite")
                 }else{
                     const response = await webpush.sendNotification(pushSubscription[i],payload)

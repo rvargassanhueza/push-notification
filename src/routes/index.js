@@ -7,7 +7,6 @@ let pushSubscription = [];
 
 router.post('/subscription', async (req,res)=>{
     pushSubscription.push(req.body);
-
     res.status(200).json();
 })
 

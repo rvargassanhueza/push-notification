@@ -30,19 +30,9 @@ router.post('/new-message', async (req,res)=>{
                 JsonSubscription = JSON.parse(dataSubscription[i].
                     json_subscription);
             
-            // const response = await webpush.sendNotification(JsonSubscription.json_subscription,payload)
+            const response = await webpush.sendNotification(JsonSubscription.json_subscription,payload)
 
-            dataSubscription.map(function(e){
-                let data = JSON.parse(e.json_subscription)
-                
-            if(data.json_subscription.endpoint === JsonSubscription.json_subscription.endpoint){
-                    console.log('se repite');
-                }else{
-                    // await webpush.sendNotification(data,payload);
-                    // const response = await webpush.sendNotification(JsonSubscription.json_subscription,payload)
-                    console.log('enviado');
-                }
-            })
+            
         }
             res.status(201).json();
 

@@ -2,11 +2,13 @@ const { Router } = require('express')
 const router = Router()
 
 const webpush = require('../webpush');
-
-let pushSubscription = [];
+const methods = require('../private/methods/subscriptionMethods')
 
 router.post('/subscription', async (req,res)=>{
-    pushSubscription.push(req.body);
+    // pushSubscription.push(req.body);
+
+    await methods._insert(req.body)
+
     res.status(200).json();
 })
 
@@ -19,16 +21,18 @@ router.post('/new-message', async (req,res)=>{
             imagen:imagen
         }) 
 
+    let dataSubscription = await methods._get()
+    let JsonSubscription;
+
         try {
-            for(let i=0;  i<=pushSubscription.length;i++){
-                if(pushSubscription[i] === pushSubscription[i+1] ){
-                    console.log("se repite")
-                }else{
-                    const response = await webpush.sendNotification(pushSubscription[i],payload)
-                    console.log("response: ",response);
-                }
+            
+            for(let i=0; i<dataSubscription.length; i++){
+                JsonSubscription = JSON.parse(dataSubscription[i].
+                    json_subscription);
+        
+                    
             }
-            // const response = await webpush.sendNotification(pushSubscription,payload)
+            const response = await webpush.sendNotification(JsonSubscription.json_subscription,payload)
             res.status(201).json();
 
         } catch (error) {

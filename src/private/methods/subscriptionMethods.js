@@ -1,5 +1,5 @@
 
-const { insertSubscription,getSubscription } = require ('../database/subscription');
+const { insertSubscription,getSubscription, getSubscriptionById } = require ('../database/subscription');
 const { NOT_FOUND, CREATED, INTERNAL_SERVER_ERROR } = require ('http-status');
 
 
@@ -11,15 +11,16 @@ let _insert = async function (subscription){
                 "expirationTime" : subscription.expirationTime,
                 "keys": subscription.keys}
             }
-        let result = await insertSubscription(dataJson)
 
-        if(result === null){
-            // res.json(NOT_FOUND);
-            // res.end();
-            // return;
+        let resultGetById = await getSubscriptionById(subscription.keys.auth);
+       
+        if(resultGetById.length != 0){
+            
+            console.log('se repite');
+        }else{
+            let resultInsert = await insertSubscription(dataJson);
+            console.log('resultInsert: ',resultInsert);
         }
-        // res.json(CREATED, result);
-        // res.end();
         
     }catch(err){
        console.log(INTERNAL_SERVER_ERROR, JSON.stringify({Error: INTERNAL_SERVER_ERROR, Message: constants.Error.INTERNALERROR}) );
@@ -34,13 +35,9 @@ let _get = async function (){
         let result = await getSubscription()
 
         if(result === null){
-            // res.json(NOT_FOUND);
-            // res.end();
-            // return;
+            
         }
         return result;
-        // res.json(CREATED, result);
-        // res.end();
         
     }catch(err){
        console.log(INTERNAL_SERVER_ERROR, JSON.stringify({Error: INTERNAL_SERVER_ERROR, Message: constants.Error.INTERNALERROR}) );

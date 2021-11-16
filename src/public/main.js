@@ -4,7 +4,7 @@ const PUBLIC_VAPID_KEY = 'BKJ7BjejQ9wpbYJhheVwYDr6jxDhjYrEwRk7sR-ZvfuvvIo2Ga7SaY
 const subscription = async ()=>{
 
     //Service worker
-    const register = await navigator.serviceWorker.register('https://h2.cooperativa.cl/worker.js')
+    const register = await navigator.serviceWorker.register('./worker.js')
 
     console.log("new service worker")
 

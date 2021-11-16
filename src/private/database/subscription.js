@@ -6,11 +6,14 @@ const configDb = require('../../common/configDb');
 const pool = mysql.createPool(configDb.db);
 
 async function insertSubscription(params){
+
 let data = JSON.stringify(params)
+
 const {json_subscription:{endpoint,expirationTime,keys:{p256dh,auth}},movil,userAgent} = params;    
+
 let query = 'INSERT INTO T_subscription SET id_subscription = ?, json_subscription = ?, movil = ?, userAgent = ?';
 
-    const result = await pool.query(query,[auth, data, movil, userAgent]);
+const result = await pool.query(query,[auth, data, movil, userAgent]);
 
     if (!result[0]) {
         throw new Error('Error al insertar datos');

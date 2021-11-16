@@ -5,7 +5,7 @@ const webpush = require('../webpush');
 const methods = require('../private/methods/subscriptionMethods')
 
 router.post('/subscription', async (req,res)=>{
-
+let variable = req.get('User-Agent')
     await methods._insert(req.body)
 
     res.status(200).json();

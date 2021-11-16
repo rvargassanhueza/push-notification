@@ -5,7 +5,6 @@ const webpush = require('../webpush');
 const methods = require('../private/methods/subscriptionMethods')
 
 router.post('/subscription', async (req,res)=>{
-    // pushSubscription.push(req.body);
 
     await methods._insert(req.body)
 
@@ -25,20 +24,16 @@ router.post('/new-message', async (req,res)=>{
     let JsonSubscription;
 
         try {
-            
             for(let i=0; i<dataSubscription.length; i++){
                 JsonSubscription = JSON.parse(dataSubscription[i].
                     json_subscription);
-            
-            const response = await webpush.sendNotification(JsonSubscription.json_subscription,payload)
 
-            
+            const response = await webpush.sendNotification(JsonSubscription.json_subscription,payload);
         }
             res.status(201).json();
-
         } catch (error) {
             console.log(error)
         }
 })
- 
+
 module.exports = router;

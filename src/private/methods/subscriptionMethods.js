@@ -15,16 +15,12 @@ let _insert = async function (subscription){
         let resultGetById = await getSubscriptionById(subscription.keys.auth);
        
         if(resultGetById.length != 0){
-            
-            console.log('se repite');
         }else{
             let resultInsert = await insertSubscription(dataJson);
-            console.log('resultInsert: ',resultInsert);
         }
         
     }catch(err){
        console.log(INTERNAL_SERVER_ERROR, JSON.stringify({Error: INTERNAL_SERVER_ERROR, Message: constants.Error.INTERNALERROR}) );
-
     }
 };
 
@@ -35,13 +31,10 @@ let _get = async function (){
         let result = await getSubscription()
 
         if(result === null){
-            
         }
         return result;
-        
     }catch(err){
        console.log(INTERNAL_SERVER_ERROR, JSON.stringify({Error: INTERNAL_SERVER_ERROR, Message: constants.Error.INTERNALERROR}) );
-
     }
 };
 
